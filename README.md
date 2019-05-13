@@ -9,3 +9,6 @@ Scripts for managing items from a marketplace portal.
 Scripts that can help you during deploy of Azure Stack.
 
 ### Certificates
+- Prepare environment (download required modules and other stuff)
+- Generate CSR files for required certificates
+- Certificates validation (create required folder structure and validation for certificates)
