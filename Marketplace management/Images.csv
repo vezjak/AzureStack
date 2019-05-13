@@ -1,0 +1,5 @@
+PublisherDisplayName,PublisherIdentifier,Offer,Sku
+Canonical,Canonical,UbuntuServer,16.04-LTS
+Microsoft,MicrosoftWindowsServer,WindowsServer,2016-Datacenter
+Microsoft,MicrosoftWindowsServer,WindowsServer,2016-Datacenter-Server-Core
+Microsoft,MicrosoftSQLServer,SQL2016SP2-WS2016,Enterprise
