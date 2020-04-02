@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "prefix": {
+      "value": "PAZKV"
+    },
+    "projectName": {
+      "value": "StdSrv"
+    },
+    "windowsImagePublisher": {
+      "value": "MicrosoftWindowsServer"
+    },
+    "windowsImageOffer": {
+      "value": "WindowsServer"
+    },
+    "windowsImageSKU": {
+      "value": "2016-Datacenter"
+    },
+    "windowsImageVersion": {
+      "value": "latest"
+    },
+    "dataDiskSize": {
+      "value": 50
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "adminUsername": {
+      "value": "vmadmi"
+    },
+    "adminPassword": {
+      "value": null
+    },
+    "vmSize": {
+      "value": "Standard_A2"
+    },
+    "subnetResourceId": {
+      "value": null
+    },
+    "rdpNATRuleID": {
+      "value": null
+    },
+    "publicIPAddressID": {
+      "value": null
+    }
+  }
+}
