@@ -5,6 +5,9 @@ Param (
     [string]$VeeamLicFile
 )
 
+New-Item .\log.txt
+Set-Content .\log.txt $StorageAccountSASTokenB64
+
 # Copy content to local drive using AzCopy
 $StorageAccountSASToken = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($StorageAccountSASTokenB64))
 New-Item -Path "C:\PostDeploymentContent" -ItemType Directory 
