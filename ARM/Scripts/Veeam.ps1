@@ -1,6 +1,8 @@
 Param (
     [string]$StorageAccountSASTokenB64,
-    [string]$storageAccountName
+    [string]$storageAccountName,
+    [string]$VeeamFile,
+    [string]$VeeamLicFile
 )
 
 # Copy content to local drive using AzCopy
@@ -18,21 +20,16 @@ function Unzip
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
 }
 
+$VeeamFilePath="C:\PostDeploymentContent\"+$VeeamFile+".zip"
+$VeeamInstPath="C:\PostDeploymentContent\Veeam\"+$VeeamFile+".exe"
+$VeeamLicFilePath="C:\PostDeploymentContent\"+$VeeamLicFile+".lic"
+
 #Unzip files
-Unzip "C:\PostDeploymentContent\Veeam\VeeamAgentWindows.zip" "C:\PostDeploymentContent\Veeam\"
+& Unzip -zipfile $VeeamFilePath -outpath "C:\PostDeploymentContent\Veeam\"
 
 #Install Veeam
-C:\PostDeploymentContent\Veeam\VeeamAgentWindows.exe /silent /accepteula /acceptthirdpartylicenses
+& $VeeamInstPath /silent /accepteula /acceptthirdpartylicenses
 
 #Import Veeam license
 Start-Sleep -Seconds 300
-& "C:\Program Files\Veeam\Endpoint Backup\veeam.agent.configurator.exe" -license /f:"C:\PostDeploymentContent\Veeam\Veeam.lic" /w
-
-# Remove license
-#& rm "C:\PostDeploymentContent\Veeam\Veeam.lic"
-
-# Import configuration
-#& "C:\Program Files\Veeam\Endpoint Backup\veeam.agent.configurator.exe" -import /f:"C:\PostDeploymentContent\Veeam\configuration.xml"
-	
-# Export configuration
-#& "C:\Program Files\Veeam\Endpoint Backup\veeam.agent.configurator.exe" -export /f:C:\PostDeploymentContent\Veeam\configuration.xml
+& "C:\Program Files\Veeam\Endpoint Backup\veeam.agent.configurator.exe" -license /f:$VeeamLicFilePath /w
