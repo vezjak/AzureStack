@@ -7,9 +7,9 @@ Param (
 
 New-Item .\log.txt
 Set-Content .\log.txt $StorageAccountSASTokenB64
-Set-Content .\log.txt $storageAccountName
-Set-Content .\log.txt $VeeamFile
-Set-Content .\log.txt $VeeamLicFile
+Add-Content .\log.txt $storageAccountName
+Add-Content .\log.txt $VeeamFile
+Add-Content .\log.txt $VeeamLicFile
 
 # Copy content to local drive using AzCopy
 $StorageAccountSASToken = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($StorageAccountSASTokenB64))
