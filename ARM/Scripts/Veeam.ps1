@@ -6,7 +6,7 @@ Param (
 # Copy content to local drive using AzCopy
 $StorageAccountSASToken = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String($StorageAccountSASTokenB64))
 New-Item -Path "C:\PostDeploymentContent" -ItemType Directory 
-$SourcePath = "https://$storageAccountName.blob.core.windows.net/postdeployment/*$StorageAccountSASToken"
+$SourcePath = "https://$storageAccountName.blob.core.windows.net/postdeployment/Veeam/*$StorageAccountSASToken"
 .\azcopy.exe copy "$SourcePath" "C:\PostDeploymentContent" --recursive=true --check-md5=NoCheck
 
 # Install Veeam Agent
